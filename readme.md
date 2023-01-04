@@ -30,7 +30,7 @@ Desvantagens da **rede ponto a ponto**:
 
 **Dispositivos Finais**: É a origem ou destino de uma mensagem transmitida na rede.
 
-**Dispositiovos Intermediários**: Conectam os dispositivos finais individuais à rede.
+**Dispositivos Intermediários**: Conectam os dispositivos finais individuais à rede.
 
 Exemplos de **dispositivos intermediários**:
 - Roteador sem fio
@@ -214,3 +214,283 @@ Componentes para segurança de uma rede comercial (Além dos componentes que sã
 - **Listas de controle de acesso (ACL)** - Eles filtram ainda mais o acesso e o encaminhamento de tráfego com base em endereços e aplicativos IP.
 - **Sitemas de prevenção de intrusões (IPS)** - Identificam ameaças de rápida disseminação, como ataques de dia zero ou hora zero.
 -  **Redes privadas virtuais (VPN)** - Fornecem acesso seguro a uma organização para trabalhadores remotos.
+
+## Sistemas Operacionais
+
+Todo disposito final e de rede exige um SO.
+
+**Hardware**: Parte fisíca de um computador, incluindo os componentes eletrônicos subjacentes.
+
+**Kernel**: Comunica-se entre o hardware e o software de um computador e gerencia como os recursos de hardware são usados para atender aos requisitos de software.
+
+**Shell**: Interface do usuário que permite que os usuários solicitem tarefas específicas do computador. Essas solicitações podem ser feitas por meio das interface CLI ou GUI
+
+**CLI**: Interface de linha de comando, serve para que o usuário interaja com a shell.
+
+**GUI**: Interface Gráfica do Usuário.
+
+## Métodos de Acesso
+
+**Console**: Esta é uma porta de gerenciamento físico que forece acesso fora de banda a um dispositivo Cisco. O acesso out-of-band refere-se ao acesso por meio de um canal dedicado de gerenciamento que é utilizado somente para fins de manutenção do dispositivo. A vantagem de usar uma porta do console é que o dispositivo está acessível mesmo que nenhum serviço de rede esteja configurado, como a configuração inicial. Um computador executando um software de emulação de terminal e um cabo de console especial para se conectar ao disposito são necessários para uma conexão de console.
+
+**Secure Shell (SSH)**: É um método dentro da banda e recomendado para estabelecer remotamente uma conexão CLI segura, através de uma interface virtual, através de uma rede. Requerem serviços de rede ativos no dispositivo, incluindo uma interface ativa configurada com um endereço. A maioria das versões do Cisco IOS inclui um servidor SSH e um cliente SSH que podem ser usados para estabelecer sessões de SSH com outros dispositivos.
+
+**Telnet**: É um método inseguro em banda para estabelecer remotamente uma sessão CLI, por meio de uma interface virtual, por uma rede. O Telnet não fornece uma conexão segura e criptografada e só deve ser usado em um ambiente de laboratório. A autenticação de usuário, as senhas e os comandos são enviados pela rede como texto simples. A melhor prática é usar SSH em vez de Telnet.
+
+**Aux**: A porta AUX em um disposito Cisco fornece conexões fora de banda por uma linha telefônica.
+
+## Programas de Emulação de Terminal
+
+São usados para se conectar a um disposito de rede por uma conexão serial por uma porta do console ou por uma conexão SSH/Telnet.
+
+Exemplos:
+- PuTTY
+- Tera Term
+- SecureCRT
+
+## Modos de Comando Primários
+
+Como recurso de segurança, o software Cisco IOS separa o acesso de gerenciamento em dois modos de comando.
+
+**Modo EXEC de usuário**: Possui recursos limitidados, mas é útil para operações básicas. Permite apenas um número limitado de comandos de monitoramento básicos, mas não permite a execução de nenhum comando que possa alterar a configuração do dispositivo. O modo EXEC usuário é identificado pelo prompt da CLI que termina com o símbolo `>`.
+
+**Modo Exec privilegiado**: Para executar comandos de configuração, um administrador de rede deve acessar esse modo. Modos de configurações mais altos, como o modo fe configuração global, só podem ser acessados do modo Exec privilegiado. Esse modo pode ser identificado pelo prompt que termica com o símbolo `#`.
+
+## Modo de configuração e modos de subconfiguração
+
+Para configurar o dispositivo, o usuário deve entrar no modo de configuração global.
+
+Nesse modo são feitas alterações na configuração via CLI que a afetam o funcionamento do dispositivo como um todo. O modo de configuração global é identificado por um prompt que termina com `(config)#` após o nome do dispositivo, como `Switch(config)#`.
+
+No modo de configuração global, o usuário pode inserir diferentes modos de subconfiguração. Cada um desses modos permite a configuração de uma parte particular ou função do dispositivo IOS.
+
+Exemplos:
+- **Modo de configuração de linha**: Usado para configurar o acesso ao console, SSH, Telnet ou AUX.
+- **Modo de configuração da interface**: Usado para configurar uma porta de switch ou interface de rede do roteador.
+
+## Navegar entre os Modos do IOS
+
+Para passar do modo **EXEC usuário** para **Exec privilegiado** o comando é `enable`, e para retornar para **Exec usuário** é `disable`.
+
+Para entrar e sair do **modo de configuração global**: `configure terminal` no modo **Exec privilegiado** e para sair basta digitar `exit`.
+
+Para entrar no **modo subconfiguração de linha**: `line tipo de acesso numero da linha de gerenciamento que deseja acessar`, `line console 0`. Use o comando `exit` para sair.
+
+Para passar de qualquer **modo de subconfiguração** para o **modo de configuração global** o comando é `exit`.
+
+Para passar de qualquer **modo de subconfiguração** para o **Exec privilegiado** o comando é `end` ou `Ctrl + Z`.
+
+Também é possível passar de um **modo de subconfiguração** para outro.
+
+## Estrutura Básica de Comandos do IOS
+
+Cada comando do IOS possui um formato ou sintaxe específica e pode ser executado apenas no modo apropriado.
+
+### Sintaxe geral de um comando:
+![](Sintaxe%20geral%20dos%20comandos.jpeg)
+- **Palavra-chave**: Este é um parâmetro específico definido no sistema operacional (na figura, protocolos ip)
+- **Argumento**: Isso não é predefinido; é um valor ou variável definido pelo usuário (na figura, 192.168.10.5)
+
+## Verificando a sintaxe dos comandos do IOS
+- **Negrito**: o texo em negrito indica comandos e palavras-chave que você digita literalmente como mostrado.
+- *itálico*: o texo em itálico indica argumentos para os quais você fornece valores.
+- **[x]**: colchetes indicam um elemento opcional (palavra-chave ou argumento).
+- **{x}**: chaves indicam um elemento necessário (palavra-chave ou argumento).
+- **[x {y | z }]**: chaves e linhas verticais entre colchetes indicam uma necessidade dentro de um elemento opcional. Espaços são usados para delinear claramente partes do comando.
+
+Exemplos que demonstram as convenções usadas para documentar e utilizar comandos do IOS:
+- **ping** *ip-address* - O comando é **ping** e o argumento definido pelo usuário é o *endereço-IP* do dispositivo de destino. Por exemplo: `ping 10.10.10.5`.
+- **traceroute** *ip-address* - O comando é **tracerout** e o argumento definido pelo usuário é o *endereço-IP* do dispositivo de destino. Por exemplo: `traceroute 192.168.254.254`.
+  
+## Recursos da Ajuda do IOS
+
+O IOS tem duas formas de ajuda disponíveis: **ajuda sensível ao contexto** e **verificação da sintaxe do comando**.
+
+A ajuda sensível ao contexto permite que você encontre resposta para as seguintes perguntas:
+- Quai comandos estão disponíveis em cada modo de comando?
+- Quais comandos começam com caracteres específicos ou grupo de caracteres?
+- Quais argumentos e palavra-chave estão disponíveis para comandos específicos?
+
+Para acessar a **ajuda sensível ao contexto**, basta inserir um ponto de interrogação, **?**, na CLI.
+
+A **verificação da sintaxe de comando** verifica se um comandos válido foi inserido pelo usuário. O interpretador faz a verificação do comando da esquerda para a direita, se ele entende o comando, ele é executado e a CLI volta para o prompt apropriado. No entanto, se o interpretador não entender o comando, ele forncerá feedback descrevendo o que está errado com o comando.
+
+## Teclas de Atalho e Atalhos
+- **Tab**: Completa um nome de comando parcialmente digitdado.
+- **Backspace**: Apaga o caractere à esquerda do cursor.
+- **Ctrl + D**: Apaga o caractere no cursor.
+- **Ctrl + K**: Apaga todos os caracteres do cursor até o final da linha de comando.
+- **Esc D**: Apaga todos os caracteres do cursor até o final da palavra.
+- **Ctrl + U ou Ctrl + X**: Apaga todos os caracteres do cursor de volta ao início do linha de comando.
+- **Ctrl + W**: Apaga a palavra à esquerda do cursor.
+- **Ctrl + A**: Move o cursor para o início da linha.
+- **Seta esquerda ou Ctrl + B**: Movem o cursor um caractere para a esquerda.
+- **Esc B**: Move o cursor uma palavra para a esquerda.
+- **Esc F**: Mode o cursor uma palavra para a direita.
+- **Seta direita ou Ctrl + F**: Movem o cursor um caractere para a direita.
+- **Ctrl + E**: Move o cursor para o final da linha de comando.
+- **Seta cima ou Ctrl + P**: Recupera os comandos no buffer do histórico, começando com o mais recente.
+- **Crtl + R ou I ou L**: Exibe novamente o prompt do sistema e a linha de comando depois que uma mensagem do console é exibida.
+- **Tecla Enter**: Exibe a próxima linha
+- **Barra de Espaço**: Exibe a próxima tela
+- **Qualquer outra chave**: Encerra a sequência de exibição, retornando ao modo Exec privilegiado.
+- **Ctrl + C**: Sai de uma operação, quando em qualquer modo de configuração, finaliza o modo de configuração e retorna para o modo Exec privilegiado. Quando no modo de instalção, aborta de volta ao comando pronto.
+- **Ctrl + Z**: Sai de uma operação, quando em qualquer modo de configuração, finalização ou modo de configuração e retornos para o modo Exec privilegiado.
+- **Ctrl + Shift + 6**: Sequência de quebra para todas as finalidades usada para abortar pesquisas de DNS, tracerouts, pings, etc.
+
+## Configuração básica de dispositivos
+
+### Nomes de Dispositivo
+
+Algumas diretrizes para nomear os dispositivos:
+- Começar com uma letra
+- Não conter espaços
+- Terminar com uma letra ou dígito
+- Usar somente letras, números e traços
+- Ter menos de 64 caracteres
+
+Para nomear um dispositivo basta entrar no modo de configuração global e usar o comando `hostname nome do dispositivo`, para voltar para o prompt padrão `no hostname`.
+
+### Diretrizes de senha
+
+O Cisco IOS pode ser configurado para usar senhas do modo hierárquico para permitir privilégios de acesso diferentes a um dispositivo de rede.
+
+Recomendações para escolha de senhas:
+- Senhas com mais de 8 caracteres
+- Combinação de maiúsculas e minúsculas, números, caracteres especiais e/ou sequências númericas
+- Evitar usar a mesma senha para todos os dispositivos
+- Não usar palavras comuns, pois são facilmente advinhadas
+
+Para proteger o acesso ao modo EXEC do usuário:
+- Entrar no modo de configuração global
+- Entrar no modo de subconfiguração em linha, exemplo: `line console 0`
+- Usar o comando `password` seguido da senha desejada
+- Usar o comando `login`
+- Sair usando o comando `end`
+- E pronto, agora ao acessar o console vai ser exigido uma senha
+
+Para proteger o acesso EXEC privilegiado:
+- Entrar no modo de configuração global
+- usar o comando `enable secret` seguido da senha desejada
+- Sair do modo usando `exit`
+- Pronto
+  
+As linhas de terminal virtual (VTY) permitem acesso remoto usando Telnet ou SSH ao dispositivo. Muitos switches Cisco são compativeis com até 16 linhas VTY numeradas de 0 a 15.
+
+Para proteger linhas VTY:
+- Entrar no modo de configuração global
+- entrar no VTY de linha usando o comando `line vty 0 15`
+- Usar o comando `password` seguido da senha desejada
+- Ativar o acesso com o comando `login`
+- Sair com o comando `end`
+
+### Criptografar as Senhas
+
+Os arquivos **startup-config** e **running-config** exibem a maioria das senhas em texto simples. Esta é uma ameaça a segurança.
+
+Para criptografar todas as senhas de texto simples:
+- Entrar no modo de configuração global
+- Usar o comando `service password-encryption`
+- Para verificar se as senhas foram ciptografadas basta usar o comando `show running-config`
+
+### Mensagens de Banner
+
+É vital fornecer um método para declarar que apenas pessoal autorizado deve tentar acessar o dispositivo. Banners podem ser uma parte importante do processo legal caso alguém seja processado por invadir um dispositivo. Alguns sistemas legais não permitem processo, ou mesmo o monitoramento de usuários, a menos que haja uma notificação visível.
+
+Para criar uma mensagem de banner em um dispositivo de rede:
+- Acesse o modo de configuração global
+- Use o comando `banner motd #mensagem que será mostrada#`
+  
+## Salvar configurações
+### Arquivos de configuração
+
+Existem dois arquivos que armazenam a configuração do dispositivo:
+- **startup-config**: Este é o arquivo de configuração salvo armazenado na NVRAM. Ele contém todos os comandos que serão usados pelo dispositivo na inicialização ou reinicialização. O flash não perde seu conteúdo quando o dispositivo está desligado.
+- **running-config**: Isto é armazenado na memória de acesso aleatório (RAM). Ele reflete a configuração atual. A modificação de uma configuração ativa afeta o funcnionamento de um dispositivo Cisco imediatamente. A RAM é uma memória volátil. Ela perde todo o seu conteúdo quando o dispositivo é desligado ou reiniciado.
+
+No tópico anterior já tem como ver a configuração de execução.
+
+Para visualizar o arquivo de configuração de inicialização: `show startup-config`.
+
+Para salvar as alterações feitas na configuração:
+- Dentro do modo EXEC privilegiado usar o comando `copy running-config startup-config`.
+
+### Alterar a configuração ativa
+
+Se as alterações ainda não tiverem sido salvas, podemos restaurar o dispositivo para a configuração anterior usando o comando `reload` dentro do modo EXEC privilegiado, isso restaura as configurações do startup-config.
+
+Quando usamos o `reload` para remover uma configuração, o dispositivo fica offline por um breve período de tempo.
+
+Caso as alterações tenha sido salvas, dentro do modo EXEC privilegiado vamos usar o comando `erase startup-config`. Após isso, devemos recarregar o dispositivo para remover o arquivo de configuração atual em execução na RAM. Ao reiniciar, um switch carragará a configuração de inicialização padrão que foi fornecida originalmente com o dispositivo.
+
+## Portas e Endereços
+
+### Endereços IP
+
+Endereços IP permitem que os dispositivos possam se localizar e estabeler uma comunicação ponto a ponto na internet. Cada dispositivo final deve ser configurado com um endereço de IP.
+
+Exemplos de dispositivos finais que precisam ter um IP:
+- Computadores
+- Impressoras de rede
+- Telefones VoIP
+- Câmeras de segurança
+- Smartphones
+- Dispositivos móveis portáteis
+
+A estrutura de um endereço **IPv4** é chamada notação decimal com ponto e é representada por quatro números decimais entre 0 e 255. Os endereços **IPv4** são atribuidos individualmente a dispositivos conectados a uma rede.
+
+Com o endereço **IPv4**, uma máscara de sub-rede também é necessária. Uma máscara de sub-rede **IPv4** é um valor de **32 bits** que diferencia a parte da rede do endereço da parte do host. Juntamente com o endereço **IPv4**, a máscara de sub-rede determina qual sub-rede p dispositivo é membro.
+
+**Endereço de gateway**: é o endereço IP do roteador que o host usará para acessar redes remotas, incluindo a internet.
+
+#### Exemplo IPv4
+![](Exemplo%20de%20IPv4.jpeg)
+
+#### Exemplo IPv6
+Os endereços **IPv6** têm **128 bits** e são escritos como uma sequência de valores hexadecimais. A cada quatro bits é representado por um único dígito hexadecimal; para um total de **32 valores hexadecimais**. Grupos de quatro dígitos hexadecimaissão separados por dois pontos (:). Os endereços **IPv6** não diferenciam maiúsculas e minúsculas e podem ser escritos tanto minúsculas como em maiúsculas.
+
+![](Exemplo%20IPv6.jpeg)
+
+### Interfaces e Portas
+
+As comunicações em rede dependem de interfaces do dispositivo de usuário final, interfaces do dispositivo de rede e cabos que as conectam. Cada interface física tem especificações ou padrões que a definem. Um cabo conectado à interface deve ser projetado de acordo com os padrões físicos da interface. Os tipos de mídia de rede incluem cabos de cobre de par trançado, cabos de fibra óptica, cabos coaxiais ou sem fio.
+
+Difierentes tipos de meio físico de rede oferecem características e benefícios diferentes. Nem todas as mídias de rede têm as mesmas características. Nem todas as mídias são apropriadas para o mesmo propósito.
+
+Algumas diferenças entre os vários tipos de mídia:
+- A distância pela qual o meio físico consegue carregar um sinal com êxito
+- O ambiente no qual o meio físico deve ser instalado
+- A quantidade e a velocidade de dados nas quais eles devem ser transmitidos
+- O custo do meio físico e da instalação
+  
+## Configurar Endereços IP
+
+### Configuração Manual de Endereço IP para dispositivos finais
+
+As informações de endereço **IPv4** podem ser inseridas nos dispositivos finais manualmente ou automaticamente usando o **DHCP (Dynamic Host Configuration Protocol)** .
+
+Para configurar manualmente um endereço **IPv4** em um host do Windows:
+- Abrir o painel de controle
+- Centro de compartilhamento de rede
+- Mudar as configurações do adaptador e escolher o adaptador.
+- Clicar com o botão direito do mouse e selecionar propriedades
+- Destacar **Internet Protocol Version 4 (TCP/IPv4)** e clicar em propriedades
+- Configurar as informações de endereço IPv4 e máscara dse sub-rede e o getway padrão.
+
+Para configurar **IPv6** os passos são semelhantes.
+
+### Configuração Automática de Endereço de IP para dispositivos finais
+
+Os dispositivos finais geralmente usam o DHCP para configuração automática de endereço **IPv4**.
+
+Em uma rede, o DHCP habilita a configuração automática de endereço IPv4 para todos os dispositivos finais habilitados para DHCP.
+
+Para configurar DHCP em um PC Windows, basta selecionar **Obter um Endereço de IP automaticamente** e **Obter endereço do servidor DNS automaticamente**.
+
+Para exibir as definições de configuração de IP em um PC com Windows, basta usar o comando **ipconfig** no prompt de comando.
+
+### Configuração da Interface Virtual de Switch
+
+Para configurar um SVI em um switch, use o comando `interface vlan 1` no modo de configuração global. Em seguida, atribua um endereço IPv4 usando o comando `ip address ip-address subnet-mask`. Por fim, ative a interface virtual usando o comando `no shutdown`.
+
+Para configurar o default-gateway: `ip default-gateway ip-address`. 
