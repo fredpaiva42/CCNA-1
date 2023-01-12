@@ -494,3 +494,381 @@ Para exibir as definições de configuração de IP em um PC com Windows, basta 
 Para configurar um SVI em um switch, use o comando `interface vlan 1` no modo de configuração global. Em seguida, atribua um endereço IPv4 usando o comando `ip address ip-address subnet-mask`. Por fim, ative a interface virtual usando o comando `no shutdown`.
 
 Para configurar o default-gateway: `ip default-gateway ip-address`. 
+
+## Protocolos e modelos
+
+### Fundamentos das Comunicações
+
+Todos os métodos de comunicação possuem os três elementos em comum:
+- **Fonte da mensagem (remetente)**: As fontes da mensagem são pessoas ou dispositivos eletrônicos que precisam enviar uma mensagem para outras pessoas ou dispositivos.
+- **Destino da mensagem (destinatário)**: O destino recebe a mensagem e a interpreta.
+- **Canal**: consiste na mídia que fornece o caminho pelo qual a mensagem viaja da origem ao destino.
+
+### Protocolos de Comunicação
+
+O envio de uma mensagem, seja por comunicação presencial ou por rede, é regedio por regras chamadas protocolos. Esses protocolos são específicos ao tipo de método de comunicação que está sendo usado.
+
+### Estabelecimento de Regras
+
+Os protocolos devem ter em conta os seguintes requisitos para entregar com êxito uma mensagem compreendida pelo receptor:
+- Um emissor e receptor identificados;
+- Língua e gramática comum;
+- Velocidade e ritmo de transmissão;
+- Requisitos de confirmação ou recepção.
+
+### Requisitos de protocolo de rede
+
+Protocolos de computador comuns incluem os seguintes requisitos:
+- Códificação de mensagens;
+- Formatação e encapsulamentos de mensagens;
+- Tamanho da mensagem;
+- Tempo da mensagem;
+- Opções de envio de mensagem.
+
+### Codificação de Mensagens
+
+Uma das primeiras etapas para enviar uma mensagem é codificá-la.
+
+**Condificação**: É o processo de conversão de informações em outra forma aceitável para a transmissão.
+
+**Decodificação**: Reverte o processo de codificação para interpretar as informações.
+
+A codificação entre hosts deve estar em um formato adequado com o meio físico. As mensagens enviadas pela rede são convertidas primeiramente em bits pelo host emissor. Cada bit é codificado em um padrão de tensões em fios de cobre, luz infravermelha em fibra ópticas ou microondas para sistemas sem fio. O host de destino recebe e decodifica os sinais para interpretar a mensagem.
+
+### Formatação e Encapsulamento de Mensagens
+
+Quando uma mensagem é enviada da origem para o destino, deve usar um formato ou uma estrutura específica. Os formatos da mensagem dependem do tipo de mensagem e do canal usado para entragá-la.
+
+Semelhante ao envio de uma carta, uma mensagem enviada por uma rede de computadores segue regras específicas de formato para que ela seja entregue e processada.
+
+![](Encapsulamento.jpeg)
+
+**Internet Protocol (IP)**: é um protocolo com uma função semelhante ao exemplo de envelope.
+
+Na figura acima, os campos do pacote IPv6 (Internet Protocol version 6) identificam a origem do pacote e seu destino. IP é responsável por enviar uma mensagem da origem da mensagem para o destino através de uma ou mais redes.
+
+### Tamanho da Mensagem
+
+Quando uma mensagem longa é enviada de um host a outro em uma rede, é necessário dividir a mensagem em partes menores. As regras que regem o tamanho das partes, ou quadros, transmitidos pela rede são muito rígidas. Também podem diferir, dependendo do canal usado. Os quadros que são muito longos ou muitos curtos não são entregues.
+
+As restrições de tamanho dos quadros exigem que o host origem divida uma mensagem longa em pedaços individuais que atendam aos requisitos de tamanho mínimo e máximo. A mensagem longa será enviada em quadros separados, e cada um contém uma parte da mensagem original. Cada quadro também terá suas próprias informações de endereço. No host destino, as partes individuais da mensagem são reconstruídas na mensagem original.
+
+### Temporização de Mensagem
+
+A temporização da mensagem inclui o seguinte:
+- **Controle de Fluxo**: Este é o processo de gerenciamento da taxa de transmissão de dados. O controle de fluxo define quanta informação pode ser enviada e a velocidade com que pode ser entregue. Na comunicação de rede, existem protocolos de rede usados pelos dispositivos de origem e destino para negociar e gerenciar o fluxo de informações.
+- **Tempo limite de resposta**: Os hosts da rede usam protocolos de rede que especificam quanto tempo esperar pelas resposta e que ação executar se ocorrer um tempo limite de resposta.
+- **Método de acesso**: determinar quando alguém pode enviar uma mensagem. Quando um deseja transmitir em uma LAN sem fio, é necessário que a placa de interface de rede (NIC) da WLAN determine se a mídia sem fio está disponível.
+
+### Opções de envio de mensagem
+
+Existem três tipos de comunicações de dados:
+- **Unicast**: informações são transmitidas apenas para um dispositivo.
+- **Multicast**: informações estão sendo transmitidas para um ou mais dispositivos.
+- **Broadcast**: Informação são transmitidas para todos os dispositivos da rede.
+
+### Uma Nota sobre o Ícone de Nó
+
+Documentos e topologias de rede geralmente representam dispositivos de rede e finais usando um ícone de nó. 
+
+## Protocolos
+
+### Visão geral do protocolo de rede
+
+Tipos de protocolos necessários para habilitar as comunicações em uma ou mais redes:
+- **Protocolos de comunicação em rede**: permitem que dois ou mais dispositivos se comuniquem através de um ou mais redes. A família de tecnologias Ethernet envolve uma variedade de protocolos como IP, Transmission Control Protocol (TCP), HyperText Protocolo de transferências (HTTP) e muito mais.
+- **Protocolos de segurança de rede**: protegem os dados para fornecer autenticação, integridade dos dados e criptografia de dados. Exemplos de protocolos seguros incluem o Secure Shell (SSH), SSL (Secure Sockets Layer) e TLS (Transport Layer Security).
+- **Protocolos de Roteamento**: permitem que os roteadores troquem informações de rota, compare caminho e, em seguida selecionar o melhor caminho para o destino remoto. Exemplos de protocolos de roteamento: Open Shortest Path First (OSPF) e Border Gateway Protocol (BGP).
+- **Protocolos de descoberta de serviço**: são usados para detecção automática de dispositiovs ou serviços. Exemplos: Host dinâmico Protocolo de configuração (DHCP) que detecta serviços para endereço IP alocação e Sistema de Nomes de Domínio (DNS) que é usado para executar conversão de nome para endereço IP.
+
+### Funções de protocolo de rede
+
+**Endereçamento**: Identifica o remetente e o destinatário pretendido usando um esquema de endereçamento definido. Exemplos: Ethernet, IPv4 e IPv6.
+
+**Confiabilidade**: Fornece mecanismos de entrega garantidos em caso de mensagens são perdidas ou corrompidas em trânsito. O TCP fornece essa garantia.
+
+**Controle de Fluxo**: Garante que os fluxos de dados a uma taxa eficiente entre dois dispositivos de comunicação. O TCP fornece serviços de controle de fluxo.
+
+**Sequenciamento**: Rotula exclusivamente cada segmento de dados transmitido. Usa as informações de sequenciamento para remontar as informações corretamente. Isso é útil se os segmentos de dados forem perdidos, atrasados ou recebidos fora de ordem. O TCP fornece serviços de sequenciamento.
+
+**Detecção de erros**: é usada para determinar se os dados foram corrompidos durante a transmissão. Protocolos que possuem tal função: Ethernet, IPv4, IPv6 e TCP.
+
+**Interface de aplicação**: contém informações usadas para processo a processo comunicações entre aplicações de rede. Por exemplo, ao acessar uma página Web, protocolos HTTP ou HTTPS são usados para se comunicar entre os processos da Web do cliente e do servidor.
+
+### Interação de Protocolos
+![](Requisicao%20Web.jpeg)
+
+Alguns protocolos que são usados quando um dispositivo envia uma solicitação para um servidor Web para sua página de Web:
+- **Protocolo de transferência de hipertexto (HTTP)**: controla a maneira como um servidor da web e um cliente da web interagem. O HTTP define o conteúdo e formatação das solicitações e respostas trocadas entre o cliente e o servidor. Tanto o software do cliente quanto o do servidor Web implementam HTTP como parte da aplicação. O HTTP conta com outros protocolos para reger o modo como as mensagens são transportadas entre cliente e servidor.
+- **Tramission Control Protocol (TCP)**: Gerencia as conversas individuais. A TCP é responsável por garantir a entrega confiável das informações e gerenciar o controle de fluxo entre os dispositivos finais.
+- **Protocolo Internet (IP)**: É responsável por entregar mensagens do remetente para o receptor. IP é usado por roteadores para encaminhar como mensagens em várias redes.
+- **Ethernet**: É responsável pela entrega de mensagens de uma NIC para outra NIC na mesma rede local (LAN) Ethernet. 
+
+## Conjuntos de Protocolos
+
+### Conjuntos de protocolos de rede
+
+Uma das melhores maneiras de visualizar como os protocolos dentro de uma suíte interafem é ver a interação como uma pilha. Uma pilha de protocolos mostra como os protocolos individuais dentro de uma suíte são implementados. Os protocolos são visualizados em termos de camadas, com cada serviço de nível superior, dependendo da funcionalidade definida pelos protocolos mostrados nos níveis inferiores. As camadas inferiores da pilha estão relacionada com a movimentação de dados pela rede e o fornecimento de serviços às camadas superiores, que se concentram no conteúdo da mensagem que está sendo enviada.
+
+![](Camada%20de%20protocolos.jpeg)
+
+### Evolução dos conjuntos de protocolos
+
+Uma suíte de protocolos é um grupo de protocolos que funcionam em conjunto para fornecer serviços abrangentes de comunicação em redes.
+
+![](Protocolos%20concorrentes.jpeg)
+
+- **Internet Protocol Suite ou TCP/IP**: é o conjunto de protocolos mais comum e relevante usado hoje. O conjunto de protocolos TCP/IP é um conjunto de protocolos padrão aberto mantido pela Internet Engineering Task Force (IETF).
+- **Protocolos de Interconexão de SIstemas Abertos (OSI)**: Está é uma família de protocolos desenvolvidos conjuntamente em 1977 pela Organização Internacional de Normalização (ISO) e pela União Internacional de Telecomunicações (UIT). O protocolo OSI também inclui um modelo de sete camadas chamdado de modelo de referência OSI. O modelo de referência OSI categoriza as funções de seus protocolos. Hoje OSI é conhecido principalmente por seu modelo em camadas. Os protocolos OSI foram amplamente substuídos por TCP/IP.
+- **AppleTalk**: Um conjunto de protocolos proprietário de curta duração lançado pela Apple Inc. em 1985 para dispositivos Apple. Em 1995, a Apple adotou o TCP/IP para substituir o AppleTalk.
+- **Novell NetWare**: Um conjunto de protocolos propriétario de curta duração e sistema operacional de rede desenvolvido pela Novell Inc. em 1983 usando o protocolo de rede IPX. Em 1995, a Novell adotou o TCP/IP para substituir o IPX.
+
+### Exemplo de protocolo TCP/IP
+
+Os protocolos TCP/IP estão disponíveis para as camadas de aplicativo, transporte e Internet. Não há protocolos TCP/IP na camada de acesso à rede. Os protocolos LAN da camada de acesso à rede mais comuns são os protocolos Ethernet e WLAN. Os protocolos da camada de acesso à rede são responsáveis por entregar o pacote IP pela mídia física.
+
+![](Exemplo%20TCP%20IP.jpeg)
+
+### Suíte de Protocolos TCP/IP
+![](Protocolos%20TCP.jpeg)
+
+TCP/IP é o conjunto de protocolos usado pela internet e as redes de hoje. O TCP/IP tem dois aspectos importantes para forncedores e fabricantes:
+- **Conjunto de protocolos de padrão aberto**: Isso significa que está disponível gratuitamente ao público e pode ser usado por qualquer forncedor em seu hardware ou software.
+- **Conjunto de protocolos com base em padrões**: Isso significa que foi endossado pela indústria de rede e aprovado por uma organização de padrões. Isso garante que produtos de diferentes fabricantes possam interoperar com êxito.
+
+#### Camada de aplicação
+- Sistema de nomes
+  - **DNS**: Sistema de nomes de domínio. Converte nomes de domínio, como cisco.com, em endereços IP.
+- Configuração de hosts
+  - **DHCPv4**: Protocolo de configuração de host dinâmico para IPv4. Um servidor DHCPv4 atribui dinamicamente informações de endereçamento IPv4 aos clientes DHCPv4 na inicialização e permite que os endereços sejam reutilizados quando não forem mais necessários.
+  - **DHCPv6**: Protocolo de configuração de host dinâmico para IPv6. Semelhante ao DHCPv4. Um servidor DHCPv6 atribui dinamicamente informaçÕes de endereçamentro IPV6 aos clientes DHCPv6 na inicialização.
+  - **SLAAC**: Configuração automática de endereço sem estado. Um método que permite que um dispositivo obtenha suas informações de endereçamento IPv6 sem usar um servidor DHCPv6.
+- Email
+  - **SMTP**: Protocolo de tranferência de correio simples. Permite que os clientes enviem emails para um servidor de email e permite que os servidores enviem email para outros servidores.
+  - **POP3**: Post Office Protocol versão 3. Permite que os clientes recuperem emails de um servidor de email e baixem o email para o aplicativo de email local do cliente.
+  - **IMAP**: Protocolo de Acesso à Mensagem na Internet. Permite que os clientes acessem o email armazenado em um servidor de email e também mantenham o email no servidor.
+- Tranferência de arquivos
+  - **FTP**: Protocolo de tranferência de arquivos. Define regras que permitem que um usuário em um host acesse e transfira arquivos para e de outro host em uma rede. O FTP é um protocolo de entrega de arquivos confiável, orientado a conexão e reconhecido.
+  - **SFTP**: Protcolo de tranferência de arquivos SSH. Como uma extensão do protocolo SSH, o SFTP pode ser usado para estabelecer uma sessão segura de tranferência de arquivos na qual a transferência é criptografada. SSH é um método para login remoto seguro que normalmente é usado para acessar a linha de comando de um dispositivo.
+  - **TFTP**: Protocolo de tranferência de Arquivos trivial. Um protocolo de transferência de arquivos simples e sem conexão com entrega de arquivos não confirmada e de melhor esforço. Ele usa menos sobrecarga que o FTP.
+- Web e serviço Web
+  - **HTTP**: Protocolo de tranferência de hipertexto. Um conjunto de regras para a troca de texto, imagens gráficas, som, vídeo e outros arquivos de multimídia na World Wide Web.
+  - **HTTPS**: HTTP seguro. Uma forma segura de HTTP que criptografa os dados que são trocados pela WWW.
+  - **REST**: Representational State Transfer. Um serviço Web que utiliza interfaces de programação de aplicações (APIs) e pedidos HTTP para criar aplicações Web. 
+
+#### Camada de Transporte
+- Conexão orientada
+  - **TCP**: Protocolo de controle de transmissão. Permite a comunicação confiável entre processos executados em hosts separados e fornece transmissões confiáveis e reconhecidas que confirmam a entrega bem-sucedida.
+- Sem Conexão
+  - **UDP**: Protocolo de datagrama do usuário. Permite que um processo em execução em host envie pacotes para um processo em execução em outro host. No entanto, o UDP não confirma a trasmissão bem-sucedida do datagrama.
+
+#### Camada de Internet
+- Protocolo IP
+  - **IPv4**: Recebe segmentos de mensagem da camada de transporte, empacota mensagens em pacotes e endereça pacotes para entrega de ponta a ponta através de uma rede. O IPv4 usa um endereço de 32 bits.
+  - **IPv6**: Semelhante ao IPv4, mas usa um endereço de 128 bits.
+  - **NAT**: Tradução de endereços de rede. Converte endereócs IPv4 de uma rede privada em endereços IPv4 públicos globalmente exclusivos.
+- Mensagens
+  - **ICMPv4**: Protocolo de mensagens de controle da internet para IPv4. Fornece feedback de um host de destino para um host de origem sobre erros na entrega de pacotes.
+  - **ICMPv6**: Semelhante ao ICMPv4.
+  - **ICMPv6 ND**: descoberta de vizinho ICMPv6. Inclui quatro mensagens de protocolo que são usadas para resolução de endereço e detecção de endereço duplicado.
+- Protocolos de roteamento
+  - **OSPF**: Abrir o caminho mais curto primeiro. Protocolo de roteamento de estado de link que usa um experimento hierárquico baseado em áreas. OSPF é um protocolo de roteamento interno padrão aberto.
+  - **EIGRP**: Protocolo de roteamento de gateway interno aprimorado. Um protocolo de roteamento de padrão aberto desenvolvido pela Cisco que usa uma métrica composta com base na largura de banda, atraso, carga e confiabilidade.
+  - **BGP**: Protocolo de gateway de fronteira. Um protocolo de roteamento de gateway externo padrão aberto usado entre os Internet Service Providers (ISPs). O BGP também é comumente usado entre os ISPs e seus grandes clientes particulares para trocar informações de roteamento.
+
+#### Camada de acesso à rede
+- Resolução de endereços
+  - **ARP**: Protocolo de Resolução de Endereço. Fornece mapeamento de endereço dinâmico entre um endereço IPv4 e um endereço de hardware.
+- Protocolos de link de dados
+  - **Ethernet**: define as regras para os padrões de fiação e sinalização da camada de acesso à rede.
+  - **WLAN**: Rede local sem fio. Define as regras para sinalização sem fio nas frequências de rádio de 2,4 GHz e 5 GHz.
+
+## Empresas de padrões
+- **Internet Society (ISOC)**: Responsável por promover o desenvolvimento aberto e a evolução do uso da internet em todo o mundo.
+- **Internet Architecture Board (IAB)**: Responsável pelo gerenciamento e desenvolvimento geral dos padrões da Internet.
+- **Internet Engineering Task Force (IETF)**: Desenvole, atualiza e mantém as tecnologias de Internet e TCP/IP. Isso inclui o processo e os documentos para o desenvolvimento de novos protocolos e atualização de protocolos existentes, conhecidos como documentos RFC (Request for Comments).
+- **Força-Tarefa de Pesquisa na Internet (IRTF)** - Focada em pesquisas de longo prazo relacionadas à internet e aos protocolos TCP/IP, como o Grupo de Pesquisa Anti-Spam (ASRG), o Grupo de Pesquisa do Forúm Criptografado (CFRG) e o Ponto a Ponto Grupo de Pesquisa (P2PRG).
+- **Corporação da Internet para nomes e números atribuídos (ICANN)**: sediada nos USA, a ICANN coordena a alocação de endereços IP, o gerenciamento de nomes de domínio e atribuição de outras informações usadas nos protocolos TCP/IP.
+- **Autoridade para atribuição de números da Internet (IANA)**: Responsável pela supervisão e gerenciamento da alocação de endereços IP, gerenciamento de nomes de domínio e identificadores de protocolo da ICANN.
+
+### Padrões eletrônicos e de comunicações
+- **IEEE**: Organização padrozinadora de engenharia elética e eletrônica que se dedica ao progresso da inovação tecnológica e a criação de padrões em vários setores, inclusive força e energia, saúde, telecomunicações e redes.
+- **EIA**: Organização conhecida por seus padrões relacionados à fiação elétrica, conectores e racks de 19 polegadas usados para montar equipamentos de rede.
+- **TIA**: Organização responsável pelo desenvolvimento de padrões de comunicação em uma variedade de áreas, incluindo equipamentos de rádio, torres celulares, dispositivos de voz sobre IP, comunicações via satélite e muito mais.
+- **ITU-T**: Uma das maiores e mais antigas organizações de padrões de comunicação. A ITU-T define padrões para compactação de vídeo, televisão por IP e comunicações de banda larga, como DSL.
+
+## Modelos de Referência
+
+### Os Benefícios de se usar um Modelo de Camadas
+
+Um modelo de camadas é usado para modularizar as operações de uma rede em camadas gerenciáveis.
+
+Estes são os benefícios do uso de um modelo de camadas para descrever protocolos e operações de rede:
+- Auxiliar no projeto de protocolos porque os protocolos que operam em uma camada específica definiram as informações sobre as quais atuam e uma interface definida para as camadas acima e abaixo.
+- Formentar a concorrência porque produtos de diferentes fornecedores podem trabalhar juntos.
+- Impedir que alterações de tecnologia ou capacidade em uma camada afetem outras camadas acima e abaixo.
+- Fornecer uma linguagem comum para descrever funções e capacidades de rede.
+  
+Existem dois modelos em camadas que são usados para descrever operações de rede:
+- Modelo de referência OSI (Open System Interconnection)
+- Modelo de referência TCP/IP
+  
+![](Modelos%20de%20Referencia.jpeg)
+
+### O Modelo de Referência OSI
+
+O modelo de referência OSI fornece uma extensa lista de funções e serviços que podem ocorrer em cada camada. Esse tipo de modelo fornece consistência em todos os tipos de protocolos e serviços de rede, descrevendo o que deve ser feito em uma camada específica, mas não prescrevendo como deve ser realizado.
+
+Ele também descreve a intereção de cada camada com as camadas diretamente acima ou abaixo. 
+
+#### Camadas do Modelo OSI
+7. **Aplicação**: Contém protocolos usados para comunicações de processo a processo.
+6. **Apresentação**: Fornece uma representação comum dos dados transferidos entre serviços da camada de aplicaçãp.
+5. **Sessão**: Fornece serviços para a camada de apresentação para organizar seu dálogo e gerenciar o intercâmbio de dados.
+4. **Transporte**: Define serviços para segmentar, transferir e remontar os dados para comunicações individuais entre os dispositivos finais. 
+3. **Rede**: Fornece serviços para trocar as partes individuias de dados através da rede entre dispositivos finais identificados.
+2. **Enlace de dados**: Descreve métodos para troca de quadros de dados entre dispositivos em um mídia comum.
+1. **Física**: Descreve os meios mecânicos, elétricos, funcionais e procedimentais para ativar, manter e desativar conexões físicas para transmissão de bits para e de um dispositivo da rede.
+
+### O Modelo TCP/IP
+
+O modelo TCP/IP para comunicação entre redes foi criado no início dos anos 70 e algumas vezes é chamado de modelo da internet. Esse tipo de modelo corresponde de perto à uma estrutura particular de um conjunto de protocolos. O Modelo TCP/IP é um modelo de protocolo porque descreve as funções que ocorrem em cada cada de protocolos dentro do pacote TCP/IP. 
+
+#### Camadas do modelo TCP/IP:
+4. **Aplicação**: Representa os dados do usuário, além do contrele de codificação e dialogo.
+3. **Transporte**: Permite a comunicação entre vários dispositivos diferentes em redes distintas.
+2. **Internet**: Determina o melhor caminho pela rede.
+1. **Acesso à rede**: Controla os dispositivos de hardware e o meio físico que formam a rede.
+
+### Comparação entre os modelos OSI e TCP/IP
+
+Os protocolos que compôes o conjunto de protocolos TCP/IP também podem ser descritos em termos do modelo OSI. No modelo OSI, a camada de acesso à rede e a camada de aplicação do modelo TCP/IP são, divídidas para descrever funções discretas que devem ocorrer nessas camadas.
+
+Na camada de acesso à rede, o conjunto de protocolos TCP/IP não específica que protocolos usar ao transmitir por meio físico; ele descreve somente a transmissão da camada de Internet aos protocolos de rede física. As camadas 1 e 2 do modelo OSI discutem os procedimentos necessários para acessar a mídia e o meio físico para eviar dados por uma rede.
+
+As principais semelhanças estão nas camadas de transporte e redem no entanto os dois modelos diferem em como eles se relacionam com as camadas acima e abaixo de cada camada:
+- A camada OSI 3, a camada de rede é mapeada diretamente para a camada de Internet TCP/IP. Essa camada é usada para descrever os protocolos que endereçam e encaminham mensagens em uma rede interconectada.
+- A camada OSI 4, mapeia diretamente para a camada de transporte TCP/IP. Essa camada descreve os serviços e as funções gerais que fornecem uma entrega ordenada e confiável de dados entre os hosts de origem e destino.
+- A camada de aplicação TCP/IP inclui vários protocolos que fornecem funcionalidades específicas para uma variedade de aplicações do usuário final. As camadas 5, 6 e 7 do modelo OSI são usadas como referências para desenvolvedores e fornecedores de softwres para produzir aplicações que operam em redes.
+- Ambos os modelos são usados geralmente para referenciar protocolos em várias camadas. Como o modelo OSI separa a camada de enlace de dados da camada física, geralmente é usado para referenciar as camadas inferiores.
+
+## Encapsulamento de dados
+
+### Segmentando mensagens
+
+Em teoria, uma única comunicação, como um vídeo ou uma mensagem de email com muitos anexos grandes, poderia ser enviada atráves de uma rede de fonte para um destino como um fluxo maciço e ininterrupto de bits. No entanto, isso criaria problemas para outros dispositivos que precisassem usar os mesmo canais de comunicação ou links. Esses gransdes fluxos de dados resultariam em atrasos consideráveis. Além disso, se algum link na infra-estrutura de rede interconectada falhasse durante a transmissão, a mesagem completa seria perdida e teria que ser retransmitida na íntegra.
+
+Uma abordagem melhor é dividir os dados em pedaços menores e mais gerenciáveis para o envio pela rede. Segmentação é o processo de divir um fluxo de dados em unidades menores para transmissões atráves da rede. A segmentação é necessária porque as redes de dados usam o conjunto de protocolos TCP/IP para enviar dados em pacotes IP individuias. Cada pacote é enviado separadamente, semelhante ao envio de uma carta longa como uma série de cartões postais individuais. Pacotes que cöntem segmentos para o mesmo destino podem ser enviados por caminhos diferentes.
+
+Benefícios da segmentação:
+- **Aumenta a velocidade**: Como um fluxo de dados grande é segmentado em pacotes, grandes quantidades de dados podem ser enviadas pela rede sem amarrar um link de comunicação. Isso permite que muitas conversas diferentes sejam intercaladas na rede chamada multiplexação.
+- **Aumenta a eficiência**: Se um único segmento não conseguir alcançar seu destino devido a uma falha na rede ou no congestionamento da rede, somente esse segmento precisa ser retransmitido em vez de reenviar todo o fluxo de dados.
+
+### Sequenciamento
+
+O desafio de utilizar segmentação e multiplexação para a transmissão de mensagens por uma rede é nível de complexidade que é agregado ao processo. Imagine se você tivesse que enviar uma carta de 100 páginas, mas cada envelope poderia conter apenas uma página. Por conseguinte, seriam necessários 100 envelopes e cada envelope teria de ser endereçado individualmente. É possível que a carta de 100 páginas em 100 envelopes diferentes chegue fora de ordem. Consequentemente, as informações contidas no envelope teriam de incluir um número sequencial para garantir que o destinatário pudesse remontar as páginas em ordem correta.
+
+Nas comunicações em rede, cada segmento da mensagem deve passar por um processo semlhante para garantir que chegue ao destino correto e possa ser remontado no conteúdo original da mensagem. O TCP é respónsavel por sequenciar os segmentos individuais.
+
+### Unidades de Dados de Protocolo
+
+À medida que os dados da aplicação são passados pela pilha de protocolos em seu caminho para serem transmitidos pelo meio físico de rede, várias informações de protocolos são adicionadas em cada nível. Isso é conhecido como o processo de encapsulamento.
+
+O formato que uma parte de dados assume em qualquer camada é chamado de unidade de dados de protocolo (**PDU**). Durante o encapsulamento, cada camada sucessora encapsula a PDU que recebe da camada superior de acordo com o protocolo sendo usado. Em cada etapa do processo, uma PDU possui um nome diferente para refletir suas novas funções. Embora não haja uma convenção de nomeclatura universal para PDUs, neste curso, as PDUs são nomeadas de acordo com os protocolos do conjunto TCP/IP.
+
+![](PDUs.jpeg)
+
+- **Dados**: termo genérico para a PDU usada na camada de aplicação;
+- **Segmento**: PDU na camada de transporte;
+- **Pacote**: PDU na camada de rede;
+- **Quadro**: PDU da camada de enlace de dados
+- **Bits**: PDU da camada física usada ao transmitir dados físicamente pela mídia.
+
+**Obs**: Se o cabeçalho de transporte é TCP, então é segmento, Se o cabeçalho Transporte é UDP, então é datagrama.
+
+## Acesso a dados
+
+### Endereços
+
+As camadas de rede e de enlace de dados são responsáveis por entregar os dados do dispositivo de origem para o dispositivo destino. Os protocolos nas duas camadas tem endereço de origem e de desitino, mas seu endereços tem finalidades diferentes:
+- **Endereços de origem e destino da camada de rede**: Responsável por entregar o pacote IP da orgigem ao destino final, que pode estar na mesma rede ou em uma rede remota.
+- **Endereços de origem e destino na camada de enlace de dados**: Responsável por forncer o quadro de enlace de dados de uma placa de interface de rede (NIC) para outra NIC na mesma rede.
+
+**Física**: Bits de temporização e sincronização.
+
+**Enlace de dados**: Endereços físicos de origem e destino.
+
+**Rede**: Endereços lógicos de rede de origem e destino.
+
+**Transporte**: Números dos processos (portas) de origem e de destino.
+
+**Camadas superiores**: Dados codificados da aplicação.
+
+### Endereço Lógico da Camada 3 (Rede)
+
+Um endereço IP é o endereço lógico da camada de rede, usado para entregar o pacote IP da origem ao destino final.
+
+![](Endereco%20Logico.jpeg)
+
+O pacote IP contém dois endereços IP:
+- **Endereço IP de origem**
+- **Endereço IP de destino**
+
+Um endereço IP contém duas partes:
+- **Parte da rede (IPv4) ou Prefixo (IPv6)**: A parte mais à esquerda do endereço que indica a rede na qual o endereço IP é um membro. Todos os dispositivos na mesma red terão a mesma partr da rede no endereço;
+- **Parte do host (IPv4) ou ID da interface (IPv6)**: A parte restante do endereço identifica um dispositivo específico na rede. Essa parte é exclusiva para cada dispositivo ou interface na rede.
+
+**Obs**: A máscara de sub-rede (IPv4) ou comprimento do prefixo (IPv6) é usada para identificar a parte da rede de um endereço IP da parte do host.
+
+### Dispositivos na Mesma Rede
+Neste exemplo, temos um computador cliente, o PC1, comunicando-se com um servidor FTP, na mesma rede IP.
+
+Endereço IPv4 origem - The IPv4 address of the sending device, the client computer PC1: 192.168.1.110.
+Endereço IPv4 destino - The IPv4 address of the receiving device, FTP server: 192.168.1.9.
+
+Observe na figura que a parte da rede do endereço IPv4 de origem e do endereço IPv4 de destino está na mesma rede. Observe na figura que a parte da rede do endereço IPv4 de origem e a parte da rede do endereço IPv4 de destino são os mesmos e, portanto, a origem e o destino estão na mesma rede.
+![](Dispositivo%20na%20mesma%20rede.jpeg)
+
+### Função dos endereços na cada de enlace de dados: mesma rede IP
+
+Quando o remetente e o destinatário do pacote IP estiverem na mesma rede, o quadro de enlace de dados será enviado diretamente para o dispositivo receptor. Em uma rede Ethernet, os endereços do link de dados são conhecidos como endereços Ethernet Media Access Control (MAC):
+![](Endereco%20Fisico.jpeg)
+
+Os endereços MAC são embutidos fisicamente na NIC Ethernet.
+- **Endereço MAC de origem**: Este é o endereço do link de dados, ou o endereço MAC Ethernet, do dispositivo que envia o quadro de link de dados com o pacote IP encapsulado. O endereço MAC da placa de rede Ethernet do PC1 é AA-AA-AA-AA-AA-AA, escrito em notação hexadecimal.
+- **Endereço MAC de destino**: Quando o dispositivo receptor está na mesma rede do endereço remetente, este é o endereço do link de dados do dispositivo receptor. Neste exemplo, o endereço MAC de destino é o endereço MAC do servidor FTP: CC-CC-CC-CC-CC-CC, escrito em notação hexadecimal.
+
+### Função dos Endereços da Camada de Rede (Redes diferentes)
+Quando o remetente do pacote estiver em uma rede diferente do destinatário, os endereços IP de origem e destino representarão hosts em redes diferentes. Isso será indicado pela porção da rede do endereço IP do host destino.
+
+Endereço IPv4 origem - The IPv4 address of the sending device, the client computer PC1: 192.168.1.110.
+Endereço IPv4 destino - The IPv4 address of the receiving device, the server, Web Server: 172.16.1.99.
+
+Observe na figura que a parte da rede do endereço IPv4 de origem e o endereço IPv4 de destino estão em redes diferentes.
+![](Redes%20diferentes.jpeg)
+
+### Funçâo dos endereços na camada de enlace de dados: redes IP diferentes
+
+Quando o remetente e o destinatário tiverem em redes diferente, não será possível enviar o quadro de enlance de dados Ethernet diretamente ao host de destino, pois ele não poderá ser alcançado diretamente na rede do remetente. O quadro Ethernet deve ser enviado a outro dispositivo conhecido como o roteador ou gatway padrão. Em nosso exemplo, o gateway padrão é R1. O R1 tem um endereço de enlace de dados Ethernet que está na mesma rede do PC1. Isso permite que o PC1 acesse o roteador diretamente.
+
+- **Endereço MAC de origem** - O endereço MAC Ethernet do dispositivo de envio, PC1. O endereço MAC da interface Ethernet do PC1 é AA-AA-AA-AA-AA-AA.
+- **Endereço MAC de destino** - Quando o dispositivo receptor, o endereço IP de destino, está em uma rede diferente do dispositivo remetente, o dispositivo remetente usa o endereço MAC Ethernet do gateway ou roteador padrão. Neste exemplo, o endereço MAC de destino é o endereço MAC da interface Ethernet R1, 11-11-11-11-11-11. Esta é a interface que está conectada à mesma rede que PC1, como mostrado na figura.
+
+Agora, o quadro Ethernet com o pacote IP encapsulado poderá ser transmitido ao R1. O R1 encaminha o pacote para o destino, o servidor Web. Isso pode significar que o R1 encaminha o pacote a outro roteador ou diretamente ao servidor Web se o destino estiver conectado em rede conectada ao R1.
+
+É importante que o endereço IP do gateway padrâo seja configurado em cada host na rede local. Todos os pacotes para destinos em redes remotas são enviados para o gateway padrão.
+
+### Endereços de Enlace de Dados
+
+O endereço físico da camada 2 do link de dados tem uma função diferente. A finalidade do endereço de enlace de dados é fornecer o quadro de enlace de dados de uma interface de rede para outra na mesma rede.
+
+Antes que um pacote IP possa ser enviado por uma rede com ou sem fio, ele dever ser encapsulado em um quadro de enlace de dados, para que possa ser transmitido pela mídia fisica.
+
+Conforme o pacote IP viaja do host para o roteador, de roteador para roteador e de roteador para host, em cada ponto ao longo do caminho, o pacote IP é encapsulado em um novo quadro de enlace de dados. Cada quadro de enlace de dados contém o endereço de enlace de dados origem da placa NIC que envia o quadro, e endereço de enlace de dados destino da placa NIC que recebe o quadro.
+
+A camada 2, o protocolo de enlace de dados só é usado para entregar o pacote e NIC para NIC na mesma rede. O roteador remove as informações da camada  conforme é recebido na NIC e adiciona novas informações de enlace de dados antes de encaminhar a NIC de saída em seu caminho para o destino final.
+
+O pacote IP é encapsulado em um quadro de link de dados que contém as seguintes informações de link de dados:
+
+- **Endereço de link de dados de origem** - O endereço físico da NIC que está enviando o quadro de link de dados.
+- **Endereço de link de dados de destino** - O endereço físico da NIC que está recebendo o quadro de link de dados. Esse endereço é o roteador do próximo salto ou o endereço do dispositivo de destino final.
