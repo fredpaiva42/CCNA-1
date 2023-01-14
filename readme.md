@@ -872,3 +872,322 @@ O pacote IP é encapsulado em um quadro de link de dados que contém as seguinte
 
 - **Endereço de link de dados de origem** - O endereço físico da NIC que está enviando o quadro de link de dados.
 - **Endereço de link de dados de destino** - O endereço físico da NIC que está recebendo o quadro de link de dados. Esse endereço é o roteador do próximo salto ou o endereço do dispositivo de destino final.
+
+## Propósito da camada física
+
+### A Camada Física
+
+A camada física do modelo OSI fornece os meios para transportar os bits que formam um quadro da camada de enlace de dados no meio físico de rede. Essa camada aceita um quadro completo da camada de enlace de dados e o codifica como uma série de sinais que são transmitidos à mídia local. Os bits codificados que formam um quadro são recebidos por um dispositivo final ou por um dispositivo intermediário.
+
+A camada física codifica os quadros e cria os sinais de onda elétrica, óptica ou de rádio que representam os bits em cada quadro. Esses sinais são enviados pela mídia, um de cada vez.
+
+A camada física do nó destino recupera esses sinais individuais do meio físico, restaura-os às suas representações de bits e passa os bits para a camada de enlace de dados como um quadro completo.
+
+## Caractéristicas da camada física
+
+### Padrões da Camada Física
+
+Os protocolos e operações das camadas OSI superiores são executados usando software desenvolvido por engenheiros de software e cientistas da computação. Os serviços e protocolos na suíte TCP/IP são definidos pela IETF.
+
+A camada física consiste em circuitos eletrônicos, meios físicos e conectores desenvolvidos pelos engenheiros. Portanto, é aconselhável que os padrões que regem esse hardware sejam definidos pelas organizações de engenharia de comunicações e elética relevantes.
+
+Os padrões de hardware, mídia, codificação e sinalização da camada física são definidos e gorvenados por essas organizações de padrões:
+- International Organization for Stardardization(ISO)
+- Telecommuinications Industry Association/Eletronic Industries Association (TIA/EIA)
+- União Internacional de Telecomunicações (ITU)
+- Instituto Nacional de Padronização Americano (ANSI)
+- Institute of Eletrical and Eletronics Engineers (IEEE)
+- Autoridades reguladoras de telecomunicações nacionais, incluem Federal Commuinication Commission (FCC) nos EUA e European Telecomunications Standarts Institute (ETSI)
+
+Além desses, geralmente existem grupos regionais de padrões de cabeamento, como CSA (Canadian Standarts Association), CENELEC (Comitê Europeu de Padronização Eletrotécnica) e JSA/JIS (Japaneses Standarts Association), que desenvolvem específicações locais.
+
+### Componentes Físicos
+
+Os padrões da camada física abordam tês áres funcionais:
+- Componentes físicos
+- Codificação
+- Sinalização
+
+**Componentes físicos**: São os dispositivos de hardware eletrônico, mídia e outros conectores que transmitem os sinais que representam os bits. Os componentes de hardware, como NICs, interfaces e conectores, materiais de cabo e projetos de cabo são especificados nos padrões associados à camada física. As várias portas e interfaces em um roteador Cisco 1941 também são exemplos de componentes físicos com conectores e conexões específicos decorrentes de padrões.
+
+### Codificação
+
+A codificação de linha é um método para converter um fluxo de bits de dados em um "código" predefinido. Os códigos são agrupamentos de bits usados para fornecer um padrão previsível que pode ser reconhecido tanto pelo emissor quanto pelo receptor. Em outras palavras, a codificação é o método ou o padrão usado para representar as informações digitais. É semelhante a como o código Morse codifica uma mensagem usando uma série de pontos e traços.
+
+Por exemplo a codificação Manschester representa um bit 0 por uma transição de alta para baixa voltagem, e um bit 1 é representado como uma transição de baixa para alta voltagem. Um exemplo de codificação Manchester é ilustrado na figura. A transição ocorre no meio de cada período de bit. Esse tipo de codificação é usado na Ethernet de 10 Mbps. Taxas de dados mais rápidas exigem uma codificação mais complexa. A codificação Manchester é usada em padrões Ethernet mais antigos, como o 10BASE-T. A Ethernet 100BASE-TX usa codificação 4B / 5B e 1000BASE-T usa codificação 8B / 10B. 
+
+![](Codificacao%20Manchester.jpeg)
+
+### Sinalização
+
+A camada fisica deve gerar sinais elétricos, ópticos ou sem fio que representam os valores "1" e "0" no meio físico. A maneira como os bits são representados é chamada de método de sinalização. os padrões de camada física devem definir que tipo de sinal representa o valor "1" e que tipo de sinal representa o valor "0". Isso pode ser tão simples quanto uma alteração no nível de um sinal elético ou de um pulso optíco. Por exemplo, um pulso longo pode representar um 1, enquanto um pulso curto pode representar um 0.
+
+Isso é semelhante ao método de sinalizaçãp usado no código Morse, que pode usar uma série de tons de ligar e desligar, luzes, ou cliques para enviar o texto por fios telefônicos ou entre as embarcações no mar.
+
+#### Sinais elétricos em cabos de cobre
+![](Sinais%20Eletricos%20em%20Cabos%20de%20Cobre.jpeg)
+#### Pulsos de Luz em Cabos de Fibra Óptica
+![](Pulsos%20de%20luz%20em%20cabos%20de%20fibra%20optica.jpeg)
+### Sinais em microondas Sem Fio
+![](Sinais%20em%20Microondas%20sem%20fio.jpeg)
+
+### Largura de Banda
+
+Meios físicos diferentes aceitam a transferência de bits a taxas diferentes. A transferência de dados é geralmente discutida em termos de largura de banda. Largura de banda é a capacidade na qual um meio pode transportar dados. A largura de banda digital mede a quantidade de dados que podem fluir de um lugar para outro durante um determinado tempo. A largura de banda é normalmente medida em kilobits por segundo (kbps), megabits (Mbps) ou gigabits por segundo (Gbps). Às vezes, a largura de banda é pensada como a velocidade em que os bits viajam, no entanto, isso não é preciso. Por exemplo, na Ethernet de 10 Mbps e 100 Mbps, os bits são enviados na velocidade da eletricidade. A diferença é o número de bits que são transmitidos por segundo.
+
+Uma combinação de fatores determina a largura de banda prática de uma rede:
+- As tecnologias do meio físico
+- As tecnologias escolhidas para sinalização e detecção de sinais de rede
+
+As propriedades do meio físico, as tecnologias atuais e as leis da física desempenham sua função na determinação da largura de banda disponível.
+
+- **Kbps**: 10^3
+- **Mbps**: 10^6
+- **Gbps**: 10^9
+- **Tbps**: 10^12
+
+### Terminologia de largura de banda
+
+**Latência**: Se refere ao tempo necessário para os dados viajarem de um ponto a outro, incluindo atrasos. Em uma internetwork ou em uma rede com vários segmentos, a taxa de transferência não pode ser mais rápida que o link mais lento no caminho da origem ao destino. Mesmo que todos ou a maioria dos segmentos tenham alta largura de banda, será necessário apenas um segmento no caminho com baixa taxa de transferência para criar um gargalo na taxa de transferência de toda a rede.
+
+**Taxa de transferência**: Taxa de transferência é a medida da transferência de bits através da mídia durante um determinado período. Devido a alguns fatores, geralmente a taxa de transferência não corresponde à largura de banda especificada nas implementações da camada física. A taxa de transferência geralmente é menor que a largura de banda. Existem muitos fatores que influenciam a taxa de transferência:
+- A quantidade de tráfego;
+- O tipo de tráfego;
+- A latência criada pelo número de dispositivos de rede encontrados entre a origem e destino.
+  
+**Dados úteis**: Há uma terceira medida para avaliar a transferência de dados utilizáveis; é conhecido como goodput. Goodput é a medida de dados usáveis transferidos em um determinado período. Goodput é a taxa de transferência menos a sobrecarga de tráfego para estabelecer sessões, reconhecimentos, encapsulamento e bits retransmitidos. O goodput é sempre menor que a taxa de transferência, que geralmente é menor do que a largura de banda.
+
+## Cabeamento de Cobre
+
+### Características do Cabeamento de Cobre
+
+O cabeamento de cobre é o tipo mais comum de cabeamento usado nas redes hoje em dia. Na verdade, o cabeamento de cobre não é apenas um tipo de cabo. Existem três tipos diferentes de cabeamento de cobre que são usados em situações específicas.
+
+As redes usam mídia de cobre porque é barata, fácil de instalar e tem baixa resistência à corrente elétrica. Entretanto, ela é limitada pela distância e interferência de sinal.
+
+Os dados são transmitidos por cabos de cobre como pulsos elétricos. Um detector na interface de rede de um dispositivo destino tem que receber um sinal que poderá ser decodificado com êxito para corresponder ao sinal enviado. No entanto, quanto mais o sinal viaja, mais ele se deteriora. Isso se chama atenuação de sinal. Por isso, todas as mídias de cobre devem seguir limitaçãoes de distâncias rigorosas, conforme especificado nos padrões de orientação.
+
+A temporização e a voltagem dos pulsos elétricos também são suscetíveis à interferência de duas fontes:
+- **Interferência eletromagnática (EMI) ou interferência de radiofrequência (RFI)**: Os sinais EMI e RFI podem distorcer e corromper os sinais de dados que estão sendo transportados pela mídia de cobre. Possíveis fontes de EMI e RFI são dispositivos de ondas de rádio e eletromágneticos, como luzes fluorescentes ou motores elétricos.
+- **Diafonia**: Diafonia é uma pertubação causada pelos campos elétrico ou magático de um sinal em um fio para o sinal em um fio adjacente. Nos circuitos de telefone, a diafonia pode fazer com que parte de outra conversa de voz de um circuito adjacente seja ouvida (linha cruzada). Especificamente, quando uma corrente elétrica flui atráves de um cabo, ela cria uma pequeno campo mágnetico circular ao redor do cabo, que pode ser captado por um cabo adjacente.
+
+Para contrabalançar os efeitos negativos da EMI e da RFI, alguns tipos de cabos de cobre têm proteção metálica e exigem conexões devidamente aterradas.
+
+Para contrabalançar os efeitos negativos do crosstalk, alguns tipos de cabos de cobre têm pares de cabos de circuitos opostos juntos, o que efetivamente cancela o crosstalk.
+
+A sucetibilidade dos cabos de cobre ao ruído eletrônico também pode ser limitada usando estas recomendações:
+- Selecionando o tipo ou categoria de cabo mais adequado para um determinado ambiente de rede
+- Projetar uma insfraestrutura de cabos para evitar fontes conhecidas e potenciais de interferência na estrutura do edifício
+- Usando técnicas de cabeamento que incluem o manuseio e a terminação adequados dos cabos
+  
+### Tipos de cabeamento de cobre
+
+![](Tipos%20de%20cabo%20de%20cobre.jpeg)
+
+### Par trançado não blidado (UTP)
+
+O cabeamento de par trançado não blindado (UTP) é o meio físico de rede mais comum. O cabeamento UTP, terminado com conectores RJ-45, é usado para interconectar hosts de rede com dispositivos de redes intermediários, como comutadores e roteadores.
+
+Nas LANs, o cabo UTP consiste em quatro pares de cabos codificados por cores que foram trançados e depois colocados em uma capa plástica flexível que protege contra danos físicos menores. O processo de trançar cabos ajuda na proteção contra interferência de sinais de outros cabos. O isolamento plástico com código de cores isola eletricamente os fios um do outro e identifica cada par.
+
+![](Cabo%20UTP.jpeg)
+
+### Par trançado blindado (STP)
+
+O par trançado blindado (STP) oferece maior proteção contra ruído do que o cabeamento UTP. No entanto, em comparação com o cabo UTP, o cabo STP é significamente mais caro e difícil instalação. Assim como o cabo UTP, o STP usa um conector RJ-45.
+
+Os cabos STP combinam as técnicas de blindagem para contrabalançar a EMI e a RFI, são trançados para conter o crosstalk. Para aproveitar totalmente a blindagem, os cabos STP são terminados com conectores de dados STP blindados especiais. Se o cabo nã estiver devidamente aterrado, a blindagem poderá atuar como uma antena e captar sinais indesejados.
+
+![](Cabo%20STP.jpeg)
+
+1. Revestimento Exterior
+2. Escudo trançado ou laminado
+3. Escudos de alumínio
+4. Pares trançados
+
+### Cabo coaxial
+
+O cabo coaxial, ou coax para abreviar, recebeu seu nome porque tem dois condutores que compartilham o mesmo eixo. Conforme mostrado na figura, o cabo coaxial consiste no seguinte:
+- Um condutor de cobre é usado para transmitir os sinais eletrônicos.
+-Uma camada de isolamento plástico flexível envolve um condutor de cobre.
+- O material de isolamento é envolvido em uma malha de cobre com tecido, ou uma folha metálica, que atua como o segundo cabo no circuito e uma proteção para o condutor interno. Essa segunda camada, ou blindagem, também reduz a quantidade de interferência eletromagnética externa.
+- Todo o cabo é coberto com um revestimento para evitar danos físicos menores.
+Há tipos diferentes de conectores utilizados com o cabo coax. Os conectores Bayonet Neill-Concelman (BNC), tipo N e tipo F são mostrados na figura.
+
+Embora o cabo UTP tenha substituído essencialmente o cabo coaxial nas modernas instalações Ethernet, o design do cabo coaxial é usado nas seguintes situações:
+- **Instalações sem fio** - Os cabos coaxiais conectam antenas a dispositivos sem fio. O cabo coaxial transporta a energia de radiofrequência (RF) entre as antenas e o equipamento de rádio.
+- **Instalações de Internet a cabo** - Os provedores de serviços a cabo fornecem conectividade à Internet para seus clientes, substituindo partes do cabo coaxial e suportando elementos de amplificação por cabo de fibra óptica. No entanto, o cabeamento dentro das instalações do cliente ainda é coaxial.
+
+![](Cabo%20Coaxial.jpeg)
+
+1. Revestimento exterior
+2. Blindagem de cobre trançado
+3. Isolante em plástico
+4. Condutor de cobre
+
+## Cabeamento UTP
+
+### Propriedades do Cabo UTP
+
+Quando usado como meio de rede, o cabeamento UTP consiste em quatro pares de fios de cobre com código de cores que foram torcidos juntos e depois envoltos em uma bainha de plástico flexível. Seu tamanho reduzido pode ser vantajoso durante a instalação.
+
+O cabo UTP não usa blindagem para contrabalançar os efeitos de EMI e RFI. Em vez disso, os projetistas de cabos descobriram outras maneiras de limitar o efeito negativo da diafonia:
+- **Cancelamento**: Os designers agora emparelham os fios em um circuito. Quando dois fios de um circuito életrico são colocados próximos um do outro, seus campos magnéticos serão opostos. Assim, os dois campos magnéticos cancelam um ao outro e também podem cancelar sinais externos de EMI e RFI.
+- **Variando o número de torções por par de fios**: Para aumentar ainda mais o efeito de cancelamento de fios de circuito emparelhados, os projetistas variam o número de torções de cada par de fios em um cabo. O cabo UTP deve seguir especificações precisas que orientam quantas tranças são permitidas por metro (3,28 pés) do cabo. Cada par colorido é trançado um número de vezes diferente.
+
+### Padrões e conectores de cabeamento UTP
+
+O cabeamento de UTP está em conformidade com os padrões estabelecidos pela TIA/EIA. Especificamente, o TIA/EIA-568 estipula os padrões de cabeamento comerciais para instalaçõe de LAN e é o padrão mais usado em ambientes de cabeamento de LAN. Alguns dos elementos definidos são os seguintes:
+- Tipos de cabos
+- Comprimento do cabo
+- Conectores
+- Terminação de cabo
+- Métodos de teste de cabo
+  
+As características elétricas do cabeamento de cobre são definidas pelo Instituto de Engenharia Elétrica e Eletrônica (IEEE). O IEEE classifica o cabeamento UTP de acordo com o desempenho. Os cabos são colocados nas categorias, com base na capacidade de transportar taxas de largura de banda mais altas. Por exemplo, o cabo Categoria 5 é usado normalmente em instalações 100BASE-TX Fast Ethernet. Outras categorias incluem o cabo Categoria 5 aprimorada, Categoria 6 e Categoria 6a.
+
+Os cabos em categorias mais altas são desenvolvidos e construídos para suportar taxas de dados mais elevadas. À medida que novas tecnologias Ethernet de velocidade gigabit estão sendo desenvolvidas e adotadas, a Categoria 5e é agora o tipo de cabo minimamente aceitável, com a Categoria 6 sendo o tipo recomendado para novas instalações prediais.
+
+![](Categoria%20dos%20cabos%20UTP.jpeg)
+
+A figura mostra três categorias de cabo UTP:
+- A categoria 3 foi orginalmente utilizada para comunicação de voz atráves de linhas de voz, mas mais tarde utilizada para transmissão de dados.
+- As categorias 5 e 5e são utilizadas para transmissão de dados. Categoria 5 suporta 100Mbps e Categoria 5e suporta 1000Mbps.
+- A categoria 6 tem um separador adicional entre cada par de fios para suportar velocidades mais altas. Categoria 6 suporta até 10 Gbps.
+- Categoria 7 também suporta 10Gbps.
+- Categoria 8 suporta 40 Gbps.
+
+O cabo UTP geralmente é terminado com um conector RJ-45. O padrão TIA/EIA-568 descreve os códigos de cores de cabos para atribuições dos pinos (pinagem) para cabos Ethernet.
+
+#### Plugues UTP RJ-45
+![](Plugues%20RJ45.jpeg)
+
+#### Sockets UTP RJ-45
+![](Socket%20RJ45.jpeg)
+
+O soquete, mostrado na figura, é o componente feminino de um dispositivo de rede, parede, tomada de partição de cubículo ou painel de conexões. Quando terminado incorretamente, o cabo é uma fonte potencial de degradação do desempenho da camada física.
+
+### Cabos UTP diretos e cruzados
+
+Situaçoes diversas podem exigir que os cabos UTP sejam conectados de acordo com diferentes convenções de fiação. Isso significa que os fios individuias do cabo precisam ser conectados em ordem diferente para conjuntos diferentes de pinos nos conectores RJ-45.
+
+Os principais tipos de cabo obtidos com o uso de convenções de cabeamento específicas:
+- **Ethernet direta**: O tipo mais comum de cabo de rede. Geralmente é usado para interconectar um host a um switch e um switch a um roteador.
+- **Ethernet crossover**: Um cabo usado para interconectar dispositivos semelhantes. Por exemplo, conectar um switch a um switch, um host a um host ou um roteador a um roteador. No entanto, os cabos cruzados agora são considerados legados, pois as NICs usam o cruzamento de interface dependente médio (Auto-MDIX) para detectar automaticamente o tipo de cabo e fazer a conexão interna.
+
+**Obs**: Outro tipo de cabo é um cabo de rollover, que é proprietário da Cisco. É usado para conectar uma estação de trabalho a uma porta do console do roteador ou do switch.
+
+O uso incorreto de um cabo crossover ou direto entre dois dispositivos não danifica os dispositivos, mas a conectividade e comunicaçãp entre os dispositivos não será realizada. Este é um erro comum e verificar se as conexões do dispositivo estão corretas deve ser a primeira ação de solução de problemas se a conectividade não for alcançada.
+
+#### Padrões T568A e T568B
+![](UTP%20T568A%20e%20T568B.jpeg)
+
+O padrão para cabos Ethernet Direto é que ambas as extremidades precisam ser T568A ou T568B.
+
+Já para Ethernet Cruzado, uma extremidade é T568A e a outra T568B.
+
+## Cabeamento de Fibra Óptica
+
+### Propriedades do Cabeamento de Fibra Óptica
+
+O cabo de fibra óptica transmite dados por longas distâncias e larguras de banda mais altas do que qualquer outra mídia de rede. Diferentemente dos fios de cobre, o cabo de fibra óptica pode transmitir sinais com menos atenuação e é completamente imune à interferência de EMI e RFI. A fibra óptica é comumente usada para interconectar dispositivos de rede.
+
+A fibra óptica é um fio flexível, extremamente fino e transparente de vidro muito puro, não muito mais que um fio de cabelo humano. Os bits saõ codificados na fibra como pulsos de luz. O cabo de fibra óptica atua como um guia de onda, ou "tubo de luz", para transmitir luz entre as duas extremidades com o mínimo de perda do sinal.
+
+### Tipos de Fibra
+
+#### Fibra monomodo
+O SMF consiste em um núcleo muito pequeno e usa a tecnologia laser cara para enviar um único raio de luz. O SMF é popular em situações de longa distância que se estendem por centenas de quilômetros, como os exigidos em aplicações de telefonia de longo curso e TV a cabo.
+
+![](Fibra%20monomodo.jpeg)
+
+#### Fibra multimodo
+O MMF consiste em um núcleo maior e usa emissores de LED para enviar pulsos de luz. Especificamente, a luz de um LED entra na fibra multimodo em diferentes ângulos. Popular nas LANs porque pode ser acionada por LEDs de baixo custo. Ela fornece largura de banda até Gbps por links de até 550 metros.
+
+![](Fibra%20multimodo.jpeg)
+
+Uma das diferenças destacadas entre MMF e SMF é a quantidade de dispersão. O termo dispersão se refere ao espalhamento do pulso de luz com o tempo. Maior dispersão significa aumento da perda de força do sinal. MMF tem uma dispersão maior do que SMF. É por isso que o MMF só pode viajar até 500 metros antes da perda de sinal.
+
+### Uso de cabeamento de fibra óptica
+O cabeamento de fibra óptica é usado em 4 setores:
+- **Redes corporativas**: usadas para aplicativos de cabeamento de backbone e dispositivos de infraestrutura de interconexão.
+- **FTTH (Fiber-to-the-home)**: usado para fornecer serviços de banda larga sempre ativos para residências e pequenas empresas.
+- **Redes de longo curso**: Utilizadas por provedores de serviços para conectar países e cidades.
+- **Redes de cabos submarinos**: Utilizada para fornecer soluções confiáveis de alta velocidade e alta capacidade, capazes de sobreviver em ambientes submarinos adversos até distãncias transoceânicas.
+
+### Conectores de Fibra Óptica
+
+Um conector de fibra óptica termina o final de uma fibra óptica. Existem vários. As principais diferenças entre os tipos são as dimensões e os métodos de acoplamento. As empresas decidem os tipos que serão usados, com base no seu equipamento.
+
+- **Ponta reta (ST)**: foram um dos primeiros. O conector trava firmemente com um mecanismo do tipo baioneta "Twist-on/Twist-off".
+- **SC (Conectores de Assinante)**: São chamados de conector quadrado ou padrão. Eles são um conector LAN e WAN amplamente adotado que usa um mecanismo push-pull para garantir uma inserção positiva. Esse tipo de conector é usado com fibra multimodo e monomodo.
+- **Lucent (LC) Simplex**: é uma versão menor do SC. Às vezes, saõ chamados de conectores pequenos ou locais e estão crescendo rapidamente de populariadade devido ao seu tamanho menor.
+- **LC duplex, multimodo**: semelhante a um conector LC, mas usa um conector duplex.
+
+Até recentemente, a luza só podia viajar em uma direção sobre fibra óptica. Duas fibras foram necessárias para suportar a operação full duplex. Portanto, os cabos de conexão de fibra óptica agrupam dois cabos de fibra óptica e os terminam com um par de conectores padrão de fibra única. Alguns conectores de fibra aceita fibras de transmissão e de recepção em um único conector, conhecido como conector duplex. Padrões BX, como 100BASE-BX, usam comprimentos de onda diferentes para enviar e receber através de uma única fibra.
+
+### Cabos de conexão de fibra
+Os cabos de fibra são necessários para interconectar dispositivos da infraestrutura. O uso das cores diferencia entre cabos monomodo e multimodo. A cor amarela indica cabos de fibra monomodo e o laranja cabos de fibra multimodo.
+
+- multimodo SC-SC
+- monomodo LC-LC
+- multimodo ST-LC
+- monomodo SC-ST
+
+### Fibra vs Cobre
+
+Há muita vantagem de usar cabos de fibra óptica em comparação com os cabos de cobre. 
+
+Atualmente, na maioria dos ambientes empresariais, a fibra óptica é usada principalmente como cabeamento de backbone para conexões ponto a ponto de alto tráfego entre instalações de distribuição de dados. Ele também é usado para a interconexãp de edifícios em campus multi-construção. Comos os cabos de fibra ótica não conduzem eletricidade e têm uma baixa perda de sinal, eles são adequados para esse uso.
+
+**Cabeamento UTP**:
+- Largura de banda suportada: 10Mbps - 10Gbps
+- Distância: 1 a 100 metros
+- Imunidade a EMI e RFI: Baixa
+- Imunidade a perigos elétricos: Baixa
+- Custos da mídia e dos conectores: Menor
+- Habilidades necessárias para instalação: Menor
+- Precauções de segurança: Menor
+
+**Cabeamento Fibra óptica**:
+- Largura de banda suportada: 10Mbps - 100Gbps
+- Distância: 1 a 100000 metros
+- Imunidade a EMI e RFI: Totalmente imune
+- Imunidade a perigos elétricos: Totalmente imune
+- Custos da mídia e dos conectores: Mais alto
+- Habilidades necessárias para instalação: Mais alta
+- Precauções de segurança: Mais alta
+
+## Meios Sem Fio
+
+### Proprieadades do Meio Físico Sem Fio
+
+O meio fíico sem fio transporta sinais eletromagnéticos ue representam os dígitos binários de comunicações de dados usando frequências de rádio ou de micro-ondas.
+
+A mídia sem fio oferece as melhores opções de mobilidade de todas mídias, e o número de dispositivos sem fio continua a aumentar. A conexão sem fio é agora a principal maneira de os usuários se conectarem a redes domésticas e corporativas.
+
+Limitações da rede sem fio:
+- **Área de corbetura**: As tecnologias de comunicação de dados sem fio funcionam bem em ambientes abertos. No entanto, alguns materiais de construção utilizados em prédios e estruturas, e o terreno local, limitarão a eficácia da cobertura.
+- **Interferência**: A conexão em fio é suscetível a interferências e pode ser interrempida por dispositivos comuns, como telefones sem fio domésticos, alguns tipos de luzes fluorescentes, fornos microondas e outras comunicações sem fio.
+- **Segurança**: A cobertura de comunicação sem fio não requer acesso a uma parte física da mídia. Portanto os dispositivos e usuários que não estão autorizados a acessar a rede podem obter acesso à transmissão. A segurança da rede é o principal componente da administração de uma rede sem fio.
+- **As WLANs e os meios compartilhados cabods de conexão de fibra**: operam em half-duplex, o que significa que apenas um dispositivo pode enviar ou receber por vez. O meio sem fio é compartilhado com todos os usuários sem fio. Muitos usuários acessando a WLAN simultaniamente resultam em largura de banda reduzida para cada usuário.
+
+### Tipos de Meio Físico Sem Fio
+
+A comunicação de dados sem fio abrangem as camadas físicas e de enlace de dados e usa os padrões da IEEE.
+
+Estes são os padrões:
+- **Wi-Fi (IEEE 802.11)**: tecnologia de LAN sem fio (WLAN), geralmente chamada de Wi-Fi. A WLAN usa um protocolo baseado em contenção conhecido como acesso múltiplo/detecção de colisão de portadora (CSMA/CA). A NIC sem fio deve ouvir primeiro, antes de transmitir, para determinar se o canal de rádio está limpo. Se houver outro dispositivo sem fio transmitindo, a NIC deverá esperar até o canal estar limpo. Wi-FI é uma marca comercial registrada da Wi-Fi Alliance. O Wi-Fi é usado com dispositivos WLAN certificados com base nos padrões IEEE 802.11
+- **Bluetooth (IEEE 802.15)**: Este é um padrão de rede pessoal sem fio (WPAN), comumente conhecido como "Bluetooth". Ele usa um processo de emparelhamento de dispositivo para se comunicar em distâncias de 1 a 100 metros.
+- **WiMAX (IEEE 802:16)**: Comumente conhecido como Interoperalidades mundial para acesso por microondas, esse padrão sem fio usa uma topologia ponto a multiponto para fornecer acesso à banda larga sem fio.
+- **Zigbee (IEEE 802.15.4)**: é uma especificação usada para comunicações de baixa taxa de dados e baixa potência. Destina-se a aplicações que exigem taxas de dados de curto alcance, baixas e longa duração da bateria. É normalmente usado para ambientes industriais e de Internet das coisas, como interruptores de luz sem fio e coleta de dados de dispositivos médicos.
+
+### LAN Sem Fio
+
+Uma implementação comum de dados sem fio permite que dispositivos se conectem sem fio por meio de uma LAN. Em geral, uma WLAN requer os seguintes dispositivos de rede:
+
+- **Ponto de acesso sem fio (AP)** - Estes concentram os sinais sem fio dos usuários e se conectam à infraestrutura de rede existente baseada em cobre, como Ethernet. Os roteadores sem fio domésticos e de pequenas empresas integram as funções de um roteador, comutador e ponto de acesso em um dispositivo, conforme mostrado na figura.
+- **Adaptadores de NIC sem fio** - fornecem recursos de comunicação sem fio para hosts de rede.
+Como a tecnologia se desenvolveu, vários padrões baseados na Ethernet WLAN surgiram. Ao comprar dispositivos sem fio, garanta compatibilidade e interoperabilidade.
+
+Os benefícios das tecnologias da comunicação de dados sem fio são evidentes, especialmente a economia nos custos de fiação local e a conveniência da mobilidade de host. Os administradores de rede devem desenvolver e aplicar políticas e processos de segurança rigorosos para proteger as WLANs contra acesso e danos não autorizados.
