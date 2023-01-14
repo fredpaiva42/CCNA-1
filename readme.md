@@ -1191,3 +1191,52 @@ Uma implementação comum de dados sem fio permite que dispositivos se conectem 
 Como a tecnologia se desenvolveu, vários padrões baseados na Ethernet WLAN surgiram. Ao comprar dispositivos sem fio, garanta compatibilidade e interoperabilidade.
 
 Os benefícios das tecnologias da comunicação de dados sem fio são evidentes, especialmente a economia nos custos de fiação local e a conveniência da mobilidade de host. Os administradores de rede devem desenvolver e aplicar políticas e processos de segurança rigorosos para proteger as WLANs contra acesso e danos não autorizados.
+
+## Sistema de numeração binário
+
+### Endereços Binários e IPv4
+
+Os endereços IPv4 começam como binários, uma série de apenas 1s e 0s. Eles são difíceis de gerenciar, portanto, os administradores de rede devem convertê-los em decimal.
+
+Binário é um sistema de numeração que consiste nos dígitos 0 e 1 chamados bits. Por outro lado, o sistema de numeração decimal consiste em 10 dígitos, consistindo nos dígitos de 0 a 9.
+
+É importante compreender o binário porque hosts, servidores e dispositivos de rede usam esse tipo de endereçamento. Especificamente, ele usam endereços IPv4 binários.
+
+![](IPv4%20Binario.jpeg)
+
+Cada endereço é composto por uma string de 32 bits dvidida em quatro seções, chamadas octetos. Cada octeto tem 8 bits (ou 1 byte) separados por um ponto. Por exemplo, o PC1 na figura recebeu o endereço IPv4 11000000.10101000.00001010.00001010. Seu endereço de gateway padrão seria aquele da interface Ethernet Gigabit do R1, 11000000.10101000.00001010.00000001.
+
+O binário funciona bem com hosts e dispositivos de rede. No entanto, é muito desafiador para os seres humanos trabalharem.
+
+Para facilitar o uso pelas pessoas, os endereços IPv4 são geralmente expressos em notação decimal pontilhada. O PC1 recebe o endereço IPv4 192.168.10.10 e o endereço de gateway padrão é 192.168.10.1.
+
+![](IPv4%20em%20decimal.jpeg)
+
+Para ter um conhecimento sólido do endereçamento de rede, é preciso saber lidar com endereçamento binário e ter prática na conversão entre endereços IOv4 binários e decimais com pontos. 
+
+## Sistema de numeração hexadecimal
+
+### Endereços hexadecimais e IPv6
+
+Assim como decimal é um sistema númerico de base dez, hexadecimal é um sistema de dezesseis bases. O sistema númerico de dezesseis bases usa os dígitos de 0 a 9 e as letras A a F.
+
+![](Base%20hexadecimal.jpeg)
+
+Binário e hexadecimal funcionam bem juntos, porque é mais fácil expressar um valor como um único dígito de hexadecimal do que como quatro bits binários.
+
+O sistema de númeração hexadecimal é usado em rede para representar endereços IP versão 6 e endereços MAC Ethernet.
+
+Os endereços IPv6 têm 128 bits de comprimento e a cada 4 bits é representado por um único dígito hexadecimal; para um total de 32 valores hexadecimais. Os endereços IPv6 não diferenciam maiúsculas e minúsculas e podem ser escritos tanto em minúsculas como em maiúsculas.
+
+O formato preferido para escrever um endereço IPv6 é x:x:x:x:x:x:x:x, com cada "x" consistindo em quatro valores hexadecimais. Quando falamos de 8 bits de um endereço IPv4, usamos o termo octeto, No IPv6, hextet é o termo não oficial usado para se referir a um segmento de 16 bits ou quatro valores hexadecimais. Cada "x" é um único hextet, 16 bits ou quatro dígitos decimais.
+
+#### Conversão decimal para hexadecimal
+1. Converta o número decimal para strings bináriaas de 8 bits.
+2. Divida as cadeias binárias em grupos de quatro a partir da posição mais à direita.
+3. Converta cada quatro números binários em seu dígito hexadecimal equivalente.
+
+#### Conversão hexadecimal em decimal
+1. Converta o número hexadecimal em cadeias binárias de 4 bits.
+2. Criar agrupamento binário de 8 bis a partir da posição mais à direita.
+3. Converta cada agrupamento binário de 8 bits em seu dígito decimal equivalente.
+
